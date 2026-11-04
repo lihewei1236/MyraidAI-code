@@ -1,0 +1,34 @@
+# === PyTorch (CPU-only) ===
+# transformers >= 4.57 要求 torch >= 2.6（CVE-2025-32434 修复）
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.6.0+cpu
+torchaudio==2.6.0+cpu
+torchvision==0.21.0+cpu
+
+# === Web 框架 ===
+fastapi
+uvicorn
+python-dotenv
+pydantic
+python-multipart        # UploadFile 必须
+
+# === Chat / OCR / Summary（Qwen3-VL-2B）+ ASR（Whisper-large-v3-turbo）===
+transformers>=4.57.0,<4.60.0
+accelerate>=0.30.0,<2.0.0
+sentencepiece>=0.1.99,<0.3.0    # Qwen / Whisper tokenizer 依赖
+
+# === 说话人分割（pyannote） ===
+pyannote.audio>=3.1,<4.0
+speechbrain==0.5.16
+onnxruntime
+
+# === TTS（Kokoro-82M 中文）===
+kokoro>=0.9,<1.0
+misaki[zh]              # Kokoro 中文 G2P
+pypinyin                # 中文拼音
+cn2an                   # 中文数字 → 阿拉伯数字
+soundfile               # wav 落盘
+
+# === 通用工具 ===
+numpy<2                 # torch 2.6 仅兼容 numpy<2
+Pillow                  # OCR 图像预处理
